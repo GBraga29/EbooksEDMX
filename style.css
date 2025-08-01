@@ -1,0 +1,629 @@
+/* Importação das fontes personalizadas */
+@font-face {
+    font-family: 'Foglihten';
+    src: url('./assets/fonts/Foglihten-068.otf') format('opentype'),
+         url('assets/fonts/Foglihten-068.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Swily Bright';
+    src: url('./assets/fonts/SwilyBright-Italic.otf') format('opentype'),
+         url('assets/fonts/SwilyBright-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Walkway Bold';
+    src: url('./assets/fonts/Walkway%20Bold.ttf') format('truetype'),
+         url('assets/fonts/Walkway%20Bold.ttf') format('truetype'),
+         url('./assets/fonts/Walkway Bold.ttf') format('truetype'),
+         url('assets/fonts/Walkway Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Reset básico e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Paleta de cores */
+:root {
+    --color-dark: #191919;
+    --color-brown: #4F3529;
+    --color-beige-green: #C8C39E;
+    --color-beige-light: #E3D1BE;
+    --color-white: #FFFFFF;
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+    
+    /* Fontes personalizadas */
+    --font-title: 'Foglihten', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-subtitle: 'Swily Bright', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-body: 'Walkway Bold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Configurações base do body */
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    color: var(--color-dark);
+    background: #FFFFFF;
+    min-height: 100vh;
+    font-weight: 300;
+}
+
+/* ================================
+   CONTAINER PRINCIPAL - ESTILO MINIMALISTA
+   ================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* ================================
+   HEADER - ESTILO MINIMALISTA E LIMPO
+   ================================ */
+.header {
+    text-align: center;
+    padding: 80px 40px 80px 40px;
+    background: var(--color-beige-light);
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    font-weight: normal;
+    color: var(--color-dark);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--color-brown);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+}
+
+/* ================================
+   SEÇÕES DOS E-BOOKS - ESTILO FLAT E MINIMALISTA
+   ================================ */
+.ebook-section {
+    background: #FFFFFF;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    overflow: visible;
+    border: none;
+    transition: none;
+}
+
+.ebook-section:nth-child(even) {
+    background: var(--color-beige-light);
+}
+
+.ebook-section:nth-child(odd) {
+    background: #FFFFFF;
+}
+
+.ebook-section:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.ebook-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 60px;
+    padding: 80px 40px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ================================
+   LAYOUT ALTERNADO - DESIGN EM ZIGUEZAGUE
+   1º livro: imagem esquerda, texto direita
+   2º livro: texto esquerda, imagem direita
+   ================================ */
+.ebook-section:nth-child(3) .ebook-content {
+    grid-template-columns: 1fr 350px;
+}
+
+.ebook-section:nth-child(3) .book-image {
+    order: 2;
+}
+
+.ebook-section:nth-child(3) .book-info {
+    order: 1;
+}
+
+/* ================================
+   IMAGENS DOS LIVROS - ESTILO LIMPO
+   ================================ */
+.book-image {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 40px;
+}
+
+/* Estilo base da capa do livro */
+.book-cover {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(79, 53, 41, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    transform-origin: center center;
+}
+
+/* Efeito hover na capa do livro */
+.book-cover:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(79, 53, 41, 0.2);
+}
+
+/* ================================
+   INFORMAÇÕES DOS LIVROS - TIPOGRAFIA MODERNA
+   ================================ */
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    font-weight: normal;
+    color: var(--color-dark);
+    margin-bottom: 30px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.book-summary {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    margin-bottom: 40px;
+    line-height: 1.8;
+    text-align: left;
+    font-weight: 300;
+}
+
+/* ================================
+   SEÇÃO DETALHADA - ESTILO FLAT
+   ================================ */
+.detailed-section {
+    background: rgba(200, 195, 158, 0.2);
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    border: none;
+    border-left: none;
+}
+
+.detail-subtitle {
+    font-family: var(--font-subtitle);
+    font-size: 1.4rem;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--color-brown);
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+/* ================================
+   LISTA DE DESTAQUES - ESTILO FLAT E ÍCONES
+   ================================ */
+.highlights-list {
+    list-style: none;
+    margin-bottom: 30px;
+    display: grid;
+    gap: 15px;
+}
+
+/* Estilo dos itens de destaque com ícones */
+.highlight-item {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 15px 20px;
+    color: var(--color-dark);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    border: none;
+    transition: var(--transition);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilo dos ícones SVG */
+.highlight-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-brown);
+    stroke-width: 2;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.highlight-item:last-child {
+    border-bottom: none;
+}
+
+.highlight-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: none;
+}
+
+.highlight-item:hover .highlight-icon {
+    stroke: var(--color-dark);
+    transform: scale(1.1);
+}
+
+.highlight-reason {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-brown);
+    font-style: italic;
+    line-height: 1.7;
+    text-align: left;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+/* ================================
+   BOTÃO CTA - ESTILO FLAT E MODERNO COM TAMANHO FIXO
+   ================================ */
+.cta-button {
+    font-family: var(--font-body);
+    display: inline-block;
+    background: var(--color-brown);
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    box-shadow: none;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    margin: 0;
+    flex-shrink: 0;
+    width: 250px;
+    min-width: 250px;
+}
+
+/* ================================
+   CONTAINER DOS BOTÕES - LAYOUT FLEXBOX
+   ================================ */
+.cta-buttons-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.cta-button:hover {
+    background: var(--color-dark);
+    transform: none;
+    box-shadow: none;
+}
+
+.cta-button:active {
+    transform: none;
+}
+
+/* ================================
+   FOOTER - ESTILO MINIMALISTA
+   ================================ */
+.footer {
+    font-family: var(--font-body);
+    text-align: center;
+    padding: 60px 40px;
+    color: var(--color-brown);
+    font-size: 0.9rem;
+    font-weight: 300;
+    background: var(--color-beige-light);
+    border-top: none;
+    margin-top: 0;
+}
+
+/* ================================
+   RESPONSIVIDADE TABLETS - DESIGN LIMPO
+   ================================ */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0;
+    }
+    
+    .header {
+        padding: 60px 30px;
+    }
+    
+    .ebook-content {
+        grid-template-columns: 280px 1fr;
+        gap: 40px;
+        padding: 60px 30px;
+    }
+    
+    /* Layout alternado em tablets */
+    .ebook-section:nth-child(3) .ebook-content {
+        grid-template-columns: 1fr 280px;
+    }
+    
+    .main-title {
+        font-family: var(--font-title);
+        font-size: 2.5rem;
+    }
+    
+    .book-title {
+        font-family: var(--font-title);
+        font-size: 1.8rem;
+    }
+}
+
+/* ================================
+   RESPONSIVIDADE MOBILE - DESIGN LIMPO
+   ================================ */
+/* Ajustes responsivos para os ícones em mobile */
+/* Desativa o efeito hover em dispositivos touch */
+@media (hover: none) {
+    .book-cover:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(79, 53, 41, 0.15);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+    }
+    
+    .header {
+        margin: 0;
+        padding: 50px 20px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Reset do grid para uma coluna em mobile */
+    .ebook-content,
+    .ebook-section:nth-child(3) .ebook-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    
+    /* Configuração padrão para imagens em mobile */
+    .book-image {
+        position: static;
+        margin-bottom: 30px;
+        order: -1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Configurações específicas para o segundo livro em mobile */
+    .ebook-section:nth-child(3) .book-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    
+    .ebook-section:nth-child(3) .book-info {
+        order: 2;
+    }
+    
+    /* Garantindo que as imagens fiquem centralizadas e responsivas */
+    .book-cover {
+        max-width: 280px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    /* Ajuste do tamanho das imagens em mobile */
+    .book-cover {
+        max-width: 250px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .book-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    
+    .book-summary,
+    .highlight-item {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .detailed-section {
+        padding: 30px 20px;
+        text-align: left;
+    }
+    
+    .detail-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cta-buttons-wrapper {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cta-button {
+        width: 100%;
+        max-width: 280px;
+        min-width: 280px;
+        text-align: center;
+        padding: 18px 20px;
+        font-size: 1rem;
+        margin: 0;
+    }
+}
+
+/* ================================
+   RESPONSIVIDADE MOBILE PEQUENO
+   ================================ */
+/* ================================
+   MOBILE PEQUENO - AJUSTES FINOS
+   ================================ */
+/* ================================
+   RESPONSIVIDADE MOBILE PEQUENO - BOTÕES
+   ================================ */
+@media (max-width: 480px) {
+    .header {
+        padding: 40px 15px;
+    }
+    
+    .main-title {
+        font-size: 1.7rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajuste de padding para mobile pequeno */
+    .ebook-content,
+    .ebook-section:nth-child(3) .ebook-content {
+        padding: 40px 15px;
+        gap: 30px;
+    }
+    
+    /* Ajuste das imagens para mobile pequeno */
+    .book-image,
+    .ebook-section:nth-child(3) .book-image {
+        margin-bottom: 20px;
+    }
+    
+    .book-cover {
+        max-width: 220px;
+    }
+    
+    .book-title {
+        font-size: 1.4rem;
+    }
+    
+    .book-summary {
+        font-size: 0.95rem;
+    }
+    
+    .detailed-section {
+        padding: 25px 15px;
+    }
+    
+    .detail-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .highlight-item {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+        gap: 12px;
+    }
+
+    .highlight-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .highlight-reason {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajuste dos botões para mobile pequeno */
+    .cta-buttons-wrapper {
+        gap: 12px;
+        align-items: center;
+    }
+    
+    .cta-button {
+        padding: 16px 18px;
+        font-size: 0.95rem;
+        width: 100%;
+        max-width: 260px;
+        min-width: 260px;
+    }
+}
+
+/* ================================
+   ANIMAÇÕES SUAVES E MINIMALISTAS
+   ================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação apenas para as seções de e-books */
+.ebook-section {
+    opacity: 1;
+    transform: none;
+    animation: none;
+}
+
+/* ================================
+   ACESSIBILIDADE E SMOOTH SCROLL
+   ================================ */
+.cta-button:focus {
+    outline: 2px solid var(--color-beige-green);
+    outline-offset: 3px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
